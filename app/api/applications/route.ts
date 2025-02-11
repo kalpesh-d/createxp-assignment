@@ -1,14 +1,29 @@
+"use server";
+
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(
-  request: Request,
-  { params }: { params: Promise<{ jobId: string }> }
-) {
+export async function POST(request: Request) {
   try {
-    const { jobId } = await params;
+    const { searchParams } = new URL(request.url);
+    const jobId = searchParams.get("jobId");
 
-    const body = await request.json();
+    if (!jobId) {
+      return NextResponse.json(
+        { error: "Job ID is required" },
+        { status: 400 }
+      );
+    }
+
+    let body;
+    try {
+      body = await request.json();
+    } catch (err) {
+      return NextResponse.json(
+        { error: "Invalid JSON in request body" },
+        { status: 400 }
+      );
+    }
 
     if (!body) {
       return NextResponse.json(
