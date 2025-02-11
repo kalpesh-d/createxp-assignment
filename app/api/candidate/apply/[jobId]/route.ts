@@ -1,12 +1,12 @@
-import { db } from "@/lib/db";
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function POST(
   request: Request,
-  { params }: { params: { jobId: string } }
+  { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
-    const { jobId } = params;
+    const { jobId } = await params;
 
     const body = await request.json();
 
@@ -26,7 +26,7 @@ export async function POST(
       );
     }
 
-    const existingApplication = await db.application.findFirst({
+    const existingApplication = await prisma.application.findFirst({
       where: {
         jobId,
         email,
@@ -40,7 +40,7 @@ export async function POST(
       );
     }
 
-    const application = await db.application.create({
+    const application = await prisma.application.create({
       data: {
         jobId,
         name,
