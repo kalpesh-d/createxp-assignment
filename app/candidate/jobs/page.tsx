@@ -1,45 +1,32 @@
-import { BaseUrl } from "@/app/layout";
-import Header from "@/components/Header";
-import JobCard from "@/components/JobCard";
-import Link from "next/link";
+import { jobMethods } from "@/lib/methods";
+import { JobFilters } from "@/components/JobFilters";
+import { JobCard } from "@/components/JobCard";
 
-interface Company {
-  name: string;
+interface SearchParams {
+  category?: string;
+  location?: string;
+  search?: string;
 }
 
-export interface Jobs {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  location: string;
-  salaryMin?: number;
-  salaryMax?: number;
-  type: string;
-  requirements?: string;
-  company: Company;
-}
-
-const JobsPage = async () => {
-  const jobsRes = await fetch(`${BaseUrl}/jobs`);
-  const data: Jobs[] = await jobsRes.json();
-
+export default async function CandidateJobsPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const jobs = await jobMethods.getJobs({
+    category: searchParams.category || "",
+    location: searchParams.location || "",
+    searchTerm: searchParams.search || "",
+  });
   return (
-    <section className="container mx-auto py-8 px-4">
-      <Header
-        heading="Available Positions"
-        para="Discover your next career opportunity"
-      />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.map((job) => (
-          <Link key={job.id} href={`/candidate/jobs/${job.id}`}>
-            <JobCard job={job} />
-          </Link>
+    <div className="container mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-6">Available Jobs</h1>
+      <JobFilters />
+      <div className="grid gap-4 mt-6">
+        {jobs.map((job) => (
+          <JobCard key={job.id} job={job} viewType="candidate" />
         ))}
       </div>
-    </section>
+    </div>
   );
-};
-
-export default JobsPage;
+}

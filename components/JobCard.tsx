@@ -1,56 +1,66 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Briefcase, Building2, DollarSign } from "lucide-react";
 import {
   Card,
-  CardTitle,
   CardHeader,
-  CardContent,
+  CardTitle,
   CardDescription,
+  CardContent,
 } from "@/components/ui/card";
 
-import { Jobs } from "../app/candidate/jobs/page";
+interface JobCardProps {
+  job: {
+    id: string;
+    title: string;
+    companyName: string;
+    location: string;
+    type: string;
+    category: string;
+    salaryMin: number;
+    salaryMax: number;
+    createdAt: Date;
+  };
+  viewType: "candidate" | "company";
+}
 
-const JobCard = ({ job }: { job: Jobs }) => {
+export function JobCard({ job, viewType }: JobCardProps) {
+  const href =
+    viewType === "candidate"
+      ? `/candidate/jobs/${job.id}`
+      : `/company/jobs/${job.id}/applications`;
+
   return (
-    <Card className="border hover:shadow-lg duration-500 h-full cursor-pointer hover:border-white hover:scale-[1.02] transition ease-in-out">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-xl font-semibold text-gray-200">
-          {job.title}
-        </CardTitle>
-        <CardDescription className="flex items-center gap-2 text-gray-400">
-          <Building2 className="w-4 h-4" />
-          {job.company?.name || "Loading..."}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="flex flex-wrap gap-2">
-            <div className="flex items-center text-sm text-gray-500">
-              <MapPin className="w-4 h-4 mr-1" />
-              {job.location}
-            </div>
-            <div className="flex items-center text-sm text-gray-500">
-              <Briefcase className="w-4 h-4 mr-1" />
-              {job.type}
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="outline" className="text-gray-400">
-              {job.category}
+    <Card className="hover:shadow-lg transition-shadow">
+      <Link href={href}>
+        <CardHeader>
+          <div className="flex justify-between items-start">
+            <CardTitle>{job.title}</CardTitle>
+            <Badge>
+              {job.type
+                .replace(/_/g, " ")
+                .toLowerCase()
+                .replace(/\b\w/g, (char) => char.toUpperCase())}
             </Badge>
-            {job.salaryMin && job.salaryMax && (
-              <Badge variant="outline" className="text-gray-400">
-                <DollarSign className="w-3 h-3 mr-1" />
-                {job.salaryMin.toLocaleString()} -{" "}
-                {job.salaryMax.toLocaleString()}
-              </Badge>
-            )}
           </div>
-        </div>
-      </CardContent>
+          <CardDescription>
+            {job.companyName} • {job.location}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex justify-between items-center">
+            <div className="space-x-2">
+              <Badge variant="outline">{job.category}</Badge>
+              <span className="text-sm text-gray-500">
+                ${job.salaryMin.toLocaleString()} - $
+                {job.salaryMax.toLocaleString()}
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">
+              {new Date(job.createdAt).toLocaleDateString()}
+            </span>
+          </div>
+        </CardContent>
+      </Link>
     </Card>
   );
-};
-
-export default JobCard;
+}

@@ -1,15 +1,21 @@
-interface header {
-  heading: string;
-  para: string;
-}
+import Link from "next/link";
 
-const Header = ({ heading, para }: header) => {
+export function Header() {
   return (
-    <div className="text-center mt-14 mb-12">
-      <h1 className="text-4xl font-bold mb-3">{heading}</h1>
-      <p className="text-lg text-gray-500">{para}</p>
-    </div>
+    <header className="border-b">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" className="text-xl font-bold">
+          Job Board
+        </Link>
+        <nav className="space-x-4">
+          <Link href="/candidate/jobs" className="hover:text-gray-600">
+            Find Jobs
+          </Link>
+          <Link href="/company/jobs" className="hover:text-gray-600">
+            Post Jobs
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
-};
-
-export default Header;
+}
