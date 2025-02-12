@@ -1,11 +1,16 @@
 "use server";
-
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const jobs = await prisma.job.findMany();
+    const jobs = await prisma.job.findMany({
+      include: {
+        company: {
+          select: { name: true }
+        }
+      },
+    });
 
     return NextResponse.json(jobs);
   } catch (error) {
