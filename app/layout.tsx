@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   description: "createxp",
 };
 
+export const BaseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://createxp-assignment.vercel.app/api"
+    : "http://localhost:3000/api";
+
 export default function RootLayout({
   children,
 }: Readonly<{

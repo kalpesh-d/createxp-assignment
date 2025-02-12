@@ -1,4 +1,9 @@
-const Header = ({ heading, para }: { heading: string; para: string }) => {
+interface header {
+  heading: string;
+  para: string;
+}
+
+const Header = ({ heading, para }: header) => {
   return (
     <div className="text-center mt-14 mb-12">
       <h1 className="text-4xl font-bold mb-3">{heading}</h1>

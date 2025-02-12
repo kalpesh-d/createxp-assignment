@@ -11,6 +11,9 @@ export async function GET(
 
     const job = await prisma.job.findUnique({
       where: { id },
+      include: {
+        company: true,
+      },
     });
 
     return NextResponse.json(job);
