@@ -2,11 +2,14 @@ import { jobMethods } from "@/lib/methods";
 import { ApplicationForm } from "@/components/ApplicationForm";
 import { notFound } from "next/navigation";
 
-export default async function ApplyPage({
-  params,
-}: {
-  params: { jobId: string };
-}) {
+interface PageProps {
+  params: {
+    jobId: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default async function ApplyPage({ params }: PageProps) {
   const { jobId } = params;
   const job = await jobMethods.getJob(jobId);
 
