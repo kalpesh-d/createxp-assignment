@@ -73,8 +73,8 @@ Available scripts in `package.json`:
 
 ## 📌 Technologies Used
 
-**Next.js**: React framework for SSR & SSG
-**TypeScript**: Typed JavaScript for safer code
-**Prisma**: ORM for database operations
-**Tailwind CSS**: Styling framework
-**Radix UI**: Accessible components
+- **Next.js** - React framework for SSR & SSG
+- **TypeScript** - Typed JavaScript for safer code
+- **Prisma** - ORM for database operations
+- **Tailwind CSS** - Styling framework
+- **ShadcnUI** - Accessible components
