@@ -7,7 +7,8 @@ export default async function ApplyPage({
 }: {
   params: { jobId: string };
 }) {
-  const job = await jobMethods.getJob(params.jobId);
+  const { jobId } = await Promise.resolve(params);
+  const job = await jobMethods.getJob(jobId);
 
   if (!job) {
     notFound();
