@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Createxp Assignment
 
-## Getting Started
+This project is a web application built using **Next.js** with **TypeScript**, **Tailwind CSS**, and **Prisma** for database management. It follows modern frontend development practices and leverages Radix UI for component styling.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 15**: React-based framework for fast development.
+- **TypeScript**: Strongly typed JavaScript for better development experience.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Prisma**: ORM for database management.
+- **ESLint & Prettier**: Enforces code quality and formatting.
+- **Radix UI**: Accessible UI component library.
+
+## 📁 Project Structure
+
+```
+createxp-assignment/
+│── app/                 # Main application logic
+│── components/          # Reusable UI components
+│── lib/                 # Utility functions and helpers
+│── prisma/              # Database schema and Prisma configurations
+│── types/               # TypeScript type definitions
+│── next.config.ts       # Next.js configuration
+│── tailwind.config.ts   # Tailwind CSS configuration
+│── tsconfig.json        # TypeScript configuration
+│── package.json         # Project dependencies and scripts
+│── .gitignore           # Files to ignore in Git
+│── eslint.config.mjs    # ESLint configuration
+│── postcss.config.mjs   # PostCSS configuration
+│── components.json      # Component-related configuration
+│── README.md            # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/kalpesh-d/createxp-assignment.git
+   cd createxp-assignment
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**
+   ```sh
+   npm install
+   # OR
+   yarn install
+   ```
 
-## Learn More
+3. **Setup environment variables**
+   Create a `.env` file in the root directory and add necessary variables:
+   ```sh
+   DATABASE_URL="your_database_connection_string"
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Run database migrations**
+   ```sh
+   npx prisma migrate dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Start the development server**
+   ```sh
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📜 Scripts
 
-## Deploy on Vercel
+Available scripts in `package.json`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **`npm run dev`** - Start the development server.
+- **`npm run build`** - Build the project for production.
+- **`npm run start`** - Start the production server.
+- **`npm run lint`** - Run ESLint checks.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📌 Technologies Used
+
+**Next.js**: React framework for SSR & SSG
+**TypeScript**: Typed JavaScript for safer code
+**Prisma**: ORM for database operations
+**Tailwind CSS**: Styling framework
+**Radix UI**: Accessible components
