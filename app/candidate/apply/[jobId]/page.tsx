@@ -7,7 +7,7 @@ export default async function ApplyPage({
 }: {
   params: { jobId: string };
 }) {
-  const { jobId } = await Promise.resolve(params);
+  const { jobId } = params;
   const job = await jobMethods.getJob(jobId);
 
   if (!job) {

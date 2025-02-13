@@ -18,6 +18,7 @@ export default async function CandidateJobsPage({
     location: searchParams.location || "",
     searchTerm: searchParams.search || "",
   });
+
   return (
     <div className="max-w-3xl mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Available Jobs</h1>
