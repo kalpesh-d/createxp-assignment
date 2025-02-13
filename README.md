@@ -1,6 +1,6 @@
 # Createxp Assignment
 
-This project is a web application built using **Next.js** with **TypeScript**, **Tailwind CSS**, and **Prisma** for database management. It follows modern frontend development practices and leverages Radix UI for component styling.
+This project is a web application built using **Next.js** with **TypeScript**, **Tailwind CSS**, and **Prisma** for database management. It follows modern frontend development practices and leverages ShadcnUI for component styling.
 
 ## 🚀 Features
 
@@ -9,7 +9,7 @@ This project is a web application built using **Next.js** with **TypeScript**, *
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **Prisma**: ORM for database management.
 - **ESLint & Prettier**: Enforces code quality and formatting.
-- **Radix UI**: Accessible UI component library.
+- **ShadcnUI**: Accessible UI component library.
 
 ## 📁 Project Structure
 
