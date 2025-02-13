@@ -9,11 +9,11 @@ export default function Home() {
       </h1>
       <div className="flex gap-4">
         <Link href="/candidate/jobs">
-          <Button size="lg">I'm a Candidate</Button>
+          <Button size="lg">I&apos;m a Candidate</Button>
         </Link>
         <Link href="/company/jobs">
           <Button size="lg" variant="outline">
-            I'm an Employer
+            I&apos;m an Employer
           </Button>
         </Link>
       </div>

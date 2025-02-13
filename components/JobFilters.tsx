@@ -15,7 +15,7 @@ import {
 export function JobFilters() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
