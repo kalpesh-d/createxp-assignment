@@ -54,11 +54,8 @@ export const jobMethods = {
   },
 
   // Get all jobs for a specific company
-  async getCompanyJobs(companyEmail: string) {
+  async getCompanyJobs() {
     return prisma.job.findMany({
-      where: {
-        companyEmail,
-      },
       include: {
         _count: {
           select: { applications: true },

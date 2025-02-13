@@ -19,7 +19,7 @@ export default async function CandidateJobsPage({
     searchTerm: searchParams.search || "",
   });
   return (
-    <div className="container mx-auto p-6">
+    <div className="max-w-3xl mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Available Jobs</h1>
       <JobFilters />
       <div className="grid gap-4 mt-6">

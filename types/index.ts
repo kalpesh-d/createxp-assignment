@@ -18,7 +18,7 @@ export interface Application {
   name: string;
   email: string;
   resumeUrl: string;
-  coverLetter: string;
+  coverLetter: string | null;
   status: string;
   jobId: string;
   createdAt: Date;

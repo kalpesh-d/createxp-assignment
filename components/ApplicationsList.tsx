@@ -1,3 +1,4 @@
+"use client";
 import { updateApplicationStatus } from "@/app/action/applications";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -8,7 +9,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function ApplicationsList({ applications, stats }) {
+import { Application } from "@/types/index";
+
+export function ApplicationsList({
+  applications,
+  stats,
+}: {
+  applications: Application[];
+  stats: { status: string; _count: number }[];
+}) {
   return (
     <div>
       <div className="grid grid-cols-4 gap-4 mb-6">

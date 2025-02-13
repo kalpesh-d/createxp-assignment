@@ -30,8 +30,8 @@ export function JobCard({ job, viewType }: JobCardProps) {
       : `/company/jobs/${job.id}/applications`;
 
   return (
-    <Card className="hover:shadow-lg transition-shadow">
-      <Link href={href}>
+    <Link href={href}>
+      <Card className="hover:shadow-lg transition-shadow">
         <CardHeader>
           <div className="flex justify-between items-start">
             <CardTitle>{job.title}</CardTitle>
@@ -60,7 +60,7 @@ export function JobCard({ job, viewType }: JobCardProps) {
             </span>
           </div>
         </CardContent>
-      </Link>
-    </Card>
+      </Card>
+    </Link>
   );
 }
