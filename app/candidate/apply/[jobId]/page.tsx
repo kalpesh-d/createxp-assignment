@@ -3,14 +3,11 @@ import { ApplicationForm } from "@/components/ApplicationForm";
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: {
-    jobId: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ jobId: string }>;
 }
 
 export default async function ApplyPage({ params }: PageProps) {
-  const { jobId } = params;
+  const { jobId } = await params;
   const job = await jobMethods.getJob(jobId);
 
   if (!job) {

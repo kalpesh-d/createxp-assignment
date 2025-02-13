@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { JobType } from "@prisma/client";
 
 export default function NewJobPage() {
   async function create(formData: FormData) {
@@ -20,7 +21,7 @@ export default function NewJobPage() {
       description: formData.get("description") as string,
       category: formData.get("category") as string,
       location: formData.get("location") as string,
-      type: formData.get("type") as string,
+      type: formData.get("type") as JobType,
       salaryMin: parseInt(formData.get("salaryMin") as string),
       salaryMax: parseInt(formData.get("salaryMax") as string),
       companyName: formData.get("companyName") as string,

@@ -11,12 +11,13 @@ interface SearchParams {
 export default async function CandidateJobsPage({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
+  const resolvedSearchParams = await searchParams;
   const jobs = await jobMethods.getJobs({
-    category: searchParams.category || "",
-    location: searchParams.location || "",
-    searchTerm: searchParams.search || "",
+    category: resolvedSearchParams.category || "",
+    location: resolvedSearchParams.location || "",
+    searchTerm: resolvedSearchParams.search || "",
   });
 
   return (

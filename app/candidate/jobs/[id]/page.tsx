@@ -7,9 +7,10 @@ import { notFound } from "next/navigation";
 export default async function JobDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const job = await jobMethods.getJob(params.id);
+  const { id } = await params;
+  const job = await jobMethods.getJob(id);
 
   if (!job) {
     notFound();

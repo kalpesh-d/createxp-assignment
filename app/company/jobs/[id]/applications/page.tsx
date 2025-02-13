@@ -5,16 +5,17 @@ import { notFound } from "next/navigation";
 export default async function JobApplicationsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const job = await jobMethods.getJob(params.id);
+  const { id } = await params;
+  const job = await jobMethods.getJob(id);
 
   if (!job) {
     notFound();
   }
 
-  const applications = await applicationMethods.getJobApplications(params.id);
-  const stats = await applicationMethods.getApplicationStats(params.id);
+  const applications = await applicationMethods.getJobApplications(id);
+  const stats = await applicationMethods.getApplicationStats(id);
 
   return (
     <div className="max-w-3xl mx-auto py-6">

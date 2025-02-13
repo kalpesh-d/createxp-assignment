@@ -1,7 +1,7 @@
-// app/actions/jobs.ts
 "use server";
 
 import { jobMethods } from "@/lib/methods";
+import { JobType } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 export async function createJob(job: {
@@ -9,7 +9,7 @@ export async function createJob(job: {
   description: string;
   category: string;
   location: string;
-  type: string;
+  type: JobType;
   salaryMin: number;
   salaryMax: number;
   companyName: string;
