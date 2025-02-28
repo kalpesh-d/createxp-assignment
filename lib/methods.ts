@@ -132,38 +132,3 @@ export const applicationMethods = {
     });
   },
 };
-
-// Analytics methods (optional)
-export const analyticsMethods = {
-  // Get overall job statistics
-  async getJobStats() {
-    return prisma.job.aggregate({
-      _count: true,
-      _max: {
-        createdAt: true,
-      },
-    });
-  },
-
-  // Get overall application statistics
-  async getApplicationStats() {
-    return prisma.application.groupBy({
-      by: ["status"],
-      _count: true,
-    });
-  },
-
-  // Get top job categories
-  async getTopCategories() {
-    return prisma.job.groupBy({
-      by: ["category"],
-      _count: true,
-      orderBy: {
-        _count: {
-          category: "desc",
-        },
-      },
-      take: 5,
-    });
-  },
-};
