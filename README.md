@@ -1,4 +1,4 @@
-# Createxp Assignment
+# Job Board App
 
 This project is a web application built using **Next.js** with **TypeScript**, **Tailwind CSS**, and **Prisma** for database management. It follows modern frontend development practices and leverages ShadcnUI for component styling.
 
